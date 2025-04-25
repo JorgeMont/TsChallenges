@@ -24,3 +24,39 @@ const myData: someInterface<HomAddress> = {
     email: 'homer@simpson.com',
     address: {street: 'evergreen', number: 2}
 }
+
+
+// Use of utility types
+// Partial<T>
+// Creates a new type from another, with all the properties set to optional
+
+// Required<T>
+// Readonly<T>
+// Pick<T, K>
+// Constructs a type by picking the set of properties Keys
+
+// Omit<T, K>
+// Record<K, T>
+
+// Task, given this type.
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+}
+
+// Create a type with only name and email (Pick)
+type PickedUser = Pick<User, "name" | "email">;
+
+// Create a type with everything except isAdmin (Omit)
+type OmitUser = Omit<User, "isAdmin">;
+
+// Create a readonly version of the user (Readonly)
+const someUser: Readonly<User> = {
+    id: '12',
+  name: "Homer",
+  email: "homer@simpson.com",
+  isAdmin: true
+};
+// Create a partial update type (like when doing PATCH requests) (Partial)
